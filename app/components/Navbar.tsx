@@ -1,15 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import logo from '../public/logo.svg'
 const Navbar = () => {
     return (
         <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="/">
-                    <figure className="image">
-                     <Image src={logo} />
-                    </figure>
-                </a>
+                <Link href="/">
+                    <a className="navbar-item">
+                        <figure className="image">
+                            <img src='/logo.svg' alt="Aureus Logo" />
+                        </figure>
+                    </a>
+                </Link>
 
                 <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
