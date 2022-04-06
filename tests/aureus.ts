@@ -1,10 +1,13 @@
 import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
 import { Aureus } from "../target/types/aureus";
+import { SolendMarket } from '@solendprotocol/solend-sdk';
+import {clusterApiUrl, Connection } from "@solana/web3.js"
 
 describe("aureus", () => {
   // Configure the client to use the local cluster.
   const provider = anchor.Provider.env()
+  let connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
   anchor.setProvider(provider);
 
   const program = anchor.workspace.Aureus as Program<Aureus>;
@@ -33,5 +36,28 @@ describe("aureus", () => {
         signers: [authority]
       });
     console.log("Your transaction signature", tx);
+  });
+
+  it("Solend market test", async () => {
+    const market = await SolendMarket.initialize(
+      connection
+    );
+    // 2. Read on-chain accounts for reserve data and cache
+    await market.loadReserves();
+    // Read Solend liquidity mining stats
+    await market.loadRewards()
+
+    // Refresh all cached data
+    await market.refreshAll()
+    for (let r of market.reserves) {
+      console.log(r.config.symbol)
+      console.log(r.totalBorrowAPY().totalAPY * 100)
+    }
+
+
+    const usdcReserve = market.reserves.find(res => res.config.symbol === 'USDC');
+    console.log(usdcReserve.stats.totalDepositsWads.toString());
+
+
   });
 });

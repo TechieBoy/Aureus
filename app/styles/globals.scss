@@ -17,9 +17,8 @@ $grey-dark: white;
 $grey-darker: white;
 $text-strong: $pallete-accent;
 
-
+$card-content-padding: 1rem;
 @import "../node_modules/bulma/bulma.sass";
-
 // Remove scrollbars
 html {
     overflow: scroll;
@@ -29,11 +28,6 @@ html {
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
-
 .hero {
     background-size: cover;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1057%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='rgba(4%2c 28%2c 50%2c 1)'%3e%3c/rect%3e%3cpath d='M16 1080L1096 0L1330 0L250 1080z' fill='url(%23SvgjsLinearGradient1058)'%3e%3c/path%3e%3cpath d='M659.6 1080L1739.6 0L2207.6 0L1127.6 1080z' fill='url(%23SvgjsLinearGradient1058)'%3e%3c/path%3e%3cpath d='M1866 1080L786 0L451.5 0L1531.5 1080z' fill='url(%23SvgjsLinearGradient1059)'%3e%3c/path%3e%3cpath d='M1276.4 1080L196.4000000000001 0L-408.0999999999999 0L671.9000000000001 1080z' fill='url(%23SvgjsLinearGradient1059)'%3e%3c/path%3e%3cpath d='M1049.0382328429619 1080L1920 209.03823284296197L1920 1080z' fill='url(%23SvgjsLinearGradient1058)'%3e%3c/path%3e%3cpath d='M0 1080L870.961767157038 1080L 0 209.03823284296197z' fill='url(%23SvgjsLinearGradient1059)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1057'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1058'%3e%3cstop stop-color='rgba(6%2c 70%2c 99%2c 0.5)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(6%2c 70%2c 99%2c 0.5)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1059'%3e%3cstop stop-color='rgba(6%2c 70%2c 99%2c 0.5)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(6%2c 70%2c 99%2c 0.5)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
@@ -62,3 +56,34 @@ nav {
   vertical-align: middle;
   display: inline-block;
 }
+
+.hvr-icon-forward {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+.hvr-icon-forward .hvr-icon {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.hvr-icon-forward:hover .hvr-icon,
+.hvr-icon-forward:focus .hvr-icon,
+.hvr-icon-forward:active .hvr-icon {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+    cursor: pointer;
+}
+$divider-margin-size: 10px !default;
+@import "../node_modules/@creativebulma/bulma-divider/src/sass/index.sass";
